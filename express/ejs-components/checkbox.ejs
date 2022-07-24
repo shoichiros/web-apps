@@ -1,0 +1,35 @@
+<%#
+## Params
+title (String) -- checkbox title.
+name (String) -- Name attribute.
+items (Object) -- checkbox contents. items { id: '', name: '', value '' }
+targets (String[]) -- checked item value lists.
+
+## Example
+include ('./components/checkbox.ejs',
+    { title: 'Checkbox select', name: 'checkItems', items: checkboxs, targets: checkboxChecked }
+)
+%>
+
+<% if (title) { %>
+<label><%= title %></label>
+<% } %>
+
+<% items.forEach(item => { %>
+<% let checked = '' %>
+
+<% for( let target = 0; target < targets.length; target++ ) { %>
+
+<% if (item.value === targets[target]) { %>
+<% checked = 'checked' %><% break %>
+<% } %>
+
+<% } %>
+
+<div class="checkbox-select">
+    <input type="checkbox" name="<%= name %>" data-name="<%= item.name %>" id="<%= item.id %>" value="<%= item.value %>" <%= checked %>>
+    <span class="custom-check"></span>
+    <label for="<%= item.id %>"><%= item.name %></label>
+</div>
+
+<% }) %>

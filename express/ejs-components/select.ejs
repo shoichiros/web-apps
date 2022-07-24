@@ -1,0 +1,27 @@
+<%#
+## Params
+title (String) -- Select title.
+name (String) -- Name attribute.
+items (Object) -- Select contents. items { id: '', name: '', value '' }
+target (String) -- Select item value.
+
+## Example
+include ('./components/select.ejs',
+    { name: 'selectItems', dummyText: 'From the following ▼', items: selectItems, target: selectedItem}
+)
+%>
+
+<% if (title) { %>
+<label><%= title %></label>
+<% } %>
+
+<select name="<%= name %>">
+    <option class="<%= name %>Item" value="" disabled selected><%= dummyText %></option>
+    <% if (items) { %>
+    <% items.forEach(item => { %>
+    <option id="<%= item.id %>" class="<%= name %>Item" value="<%= item.value %>" <%= target === item.name ? 'selected': '' %>>
+        <%= item.name %>
+    </option>
+    <% }) %>
+    <% } %>
+</select>

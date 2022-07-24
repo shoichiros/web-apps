@@ -1,0 +1,24 @@
+<%#
+## Params
+title (String) -- Radiobox title.
+name (String) -- Name attribute.
+items (Object) -- Radiobox contents. items { id: '', name: '', value '' }
+target (String) -- Radiobox item value.
+
+## Example
+include ('./components/radiobox.ejs',
+    { title: 'Radio select', name: 'radioItems', items: radioboxs, target: radioChecked }
+)
+%>
+
+<% if (title) { %>
+<label><%= title %></label>
+<% } %>
+
+<% items.forEach(item => { %>
+<div class="radio-select">
+    <input type="radio" name="<%= name %>" data-name="<%= item.name %>" id="<%= item.id %>" value="<%= item.value %>" <%= item.value === target ? 'checked' : '' %>>
+    <span class="custom-check"></span>
+    <label for="<%= item.id %>"><%= item.name %></label>
+</div>
+<% }) %>
