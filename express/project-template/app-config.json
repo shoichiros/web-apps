@@ -1,0 +1,17 @@
+{
+    "main": {
+        "fetchBaseUrl": "http://localhost:3000/api",
+        "port": "3000",
+        "rootPath": "/app/"
+    },
+    "api": {
+        "baseUrl": "/api"
+    },
+    "db": {
+        "connect": {
+            "host": "localhost",
+            "user": "root",
+            "database": "test"
+        }
+    }
+}
